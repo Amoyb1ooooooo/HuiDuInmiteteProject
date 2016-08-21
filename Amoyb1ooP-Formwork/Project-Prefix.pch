@@ -1,0 +1,15 @@
+//
+//  Project-Prefix.pch
+//  Amoyb1ooP-Formwork
+//
+//  Created by Amoyb1oo on 16/8/18.
+//  Copyright © 2016年 Amoyb1oo. All rights reserved.
+//
+
+#ifndef Project_Prefix_pch
+#define Project_Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* Project_Prefix_pch */
