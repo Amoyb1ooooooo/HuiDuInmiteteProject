@@ -23,7 +23,7 @@
 }
 
 - (void)getArticleList{
-    NSString *url = @"http://huiduservice.lanxijun.com/articleList.json?appId=cuunyVcB1QBTmNUN&pageNum=1&pageSize=10&sign=8bycBeYXU%2B9ReEMAaqsoBGuX8WUqokSf%2FCicg1QKeNY%3D&timestamp=1471764600";
+    NSString *url = @"http://huiduservice.lanxijun.com/articleList.json?appId=cuunyVcB1QBTmNUN&pageNum=1&pageSize=10&sign=dbyRArXBJ2JQxHmQMvhJR5gRbm4QaHr3qHxjw%2F%2BjagE%3D&timestamp=1471847400";
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
@@ -60,7 +60,7 @@
 }
 
 - (void)getArticleDetail{
-    NSString *url = @"http://article.lanxijun.com/articleDetail.json?appId=hQCxinnGahes5iXQ&id=42174&sign=Z968DABff1AcBnf68bU4ohffABJm83YXZBMDNq36NiQ%3D&signType=1";
+    NSString *url = @"http://article.lanxijun.com/articleDetail.json?appId=hQCxinnGahes5iXQ&id=42178&sign=VGEAuFchAr3BjxePY%2Fx6J97pN4vExbqppyb2luU7O3E%3D&signType=1";
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
