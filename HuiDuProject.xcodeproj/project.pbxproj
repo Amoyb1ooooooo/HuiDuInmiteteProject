@@ -48,6 +48,7 @@
 		606DEE121D660D3B00DA4914 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 606DEE101D660D3B00DA4914 /* LaunchScreen.storyboard */; };
 		606DEE1D1D660D3B00DA4914 /* HuiDuProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 606DEE1C1D660D3B00DA4914 /* HuiDuProjectTests.m */; };
 		606DEE281D660D3B00DA4914 /* HuiDuProjectUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 606DEE271D660D3B00DA4914 /* HuiDuProjectUITests.m */; };
+		60ECCFB81D6D84D7006A30F3 /* DBUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 60ECCFB71D6D84D7006A30F3 /* DBUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +144,8 @@
 		606DEE291D660D3B00DA4914 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		606DEE3F1D660EC100DA4914 /* Define.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
 		606DEE451D660F8500DA4914 /* Project-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Project-Prefix.pch"; sourceTree = "<group>"; };
+		60ECCFB61D6D84D7006A30F3 /* DBUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBUtil.h; sourceTree = "<group>"; };
+		60ECCFB71D6D84D7006A30F3 /* DBUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBUtil.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -302,6 +305,8 @@
 				60654E951D672F5900B6BE4C /* DiscoverList.m */,
 				60654E9F1D6872C400B6BE4C /* ArticleManager.h */,
 				60654EA01D6872C400B6BE4C /* ArticleManager.m */,
+				60ECCFB61D6D84D7006A30F3 /* DBUtil.h */,
+				60ECCFB71D6D84D7006A30F3 /* DBUtil.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -594,6 +599,7 @@
 				60654EBA1D68771D00B6BE4C /* AFSecurityPolicy.m in Sources */,
 				60654EA11D6872C400B6BE4C /* ArticleManager.m in Sources */,
 				60654EB71D68771D00B6BE4C /* AFHTTPRequestOperationManager.m in Sources */,
+				60ECCFB81D6D84D7006A30F3 /* DBUtil.m in Sources */,
 				60654E8A1D66FEEC00B6BE4C /* DiscoverPage.m in Sources */,
 				60654EBD1D68771D00B6BE4C /* AFURLResponseSerialization.m in Sources */,
 			);

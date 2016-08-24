@@ -13,6 +13,7 @@
 @optional
 - (void)updataArticleList;
 - (void)updataArticleDetail;
+- (void)updataArticleCategory;
 
 @end
 
@@ -20,10 +21,11 @@
 @interface ArticleManager : NSObject
 - (void)getArticleList;
 - (void)getArticleDetail;
+- (void)getArticleCategory;
 
 @property(nonatomic,strong) id<ArticleManagerDelegate> delegate;
 @property(nonatomic,strong) NSMutableArray *articleListDataSource;
 @property (nonatomic,strong)NSDictionary *articleDetailDataSource;
-
+@property (nonatomic,strong)NSMutableArray *articleCategoryDataSource;
 
 @end

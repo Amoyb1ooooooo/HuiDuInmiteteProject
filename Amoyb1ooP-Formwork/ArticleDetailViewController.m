@@ -15,6 +15,8 @@
 @property (nonatomic,strong)ArticleManager *articlemanager;
 @property (nonatomic,assign)double labelActualSizeHeigth,webViewActualSizeHeight;
 @property (nonatomic,strong)UIScrollView *scrollView;
+@property (nonatomic,strong)NSArray *categoryListDatasource;
+@property (nonatomic,strong)UIImage *ok,*cancle;
 @end
 
 @implementation ArticleDetailViewController
@@ -25,14 +27,20 @@
     _articlemanager = [[ArticleManager alloc]init];
     _articlemanager.delegate = self;
     [_articlemanager getArticleDetail];
+    _categoryListDatasource = @[];
+    _ok = [UIImage imageNamed:@"followTopic.png"];
+    _cancle = [UIImage imageNamed:@"cancleFollow.png"];
     
-    // Do any additional setup after loading the view.
 }
 
 - (void)updataArticleDetail{
     NSDictionary *superDic = _articlemanager.articleDetailDataSource;
     NSLog(@"%@",superDic);
     NSDictionary *dic = [superDic objectForKey:@"result"];
+    
+    NSDictionary *model = [superDic objectForKey:@"models"];
+    _categoryListDatasource = [model objectForKey:@"categoryList"];
+    [_tableView reloadData];
     
     NSString *author = [dic objectForKey:@"author"];
     NSString *content = [dic objectForKey:@"content"];
@@ -84,15 +92,20 @@
     _webView.delegate = self;
     [self.view addSubview:_webView];
     
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(10, 150, self.view.frame.size.width-20, self.view.frame.size.height-280)];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    
     // scrollView
     _scrollView = [[UIScrollView alloc]initWithFrame:self.view.bounds];
-    CGSize size = CGSizeMake(self.view.frame.size.width, 3000);
+    CGSize size = CGSizeMake(self.view.frame.size.width, 50+_labelActualSizeHeigth+_webViewActualSizeHeight+_tableView.frame.size.height);
     _scrollView.contentSize = size;
     
     [_scrollView addSubview:_authorLabel];
     [_scrollView addSubview:_publishTime];
     [_scrollView addSubview:_titleLabel];
     [_scrollView addSubview:_webView];
+    [_scrollView addSubview:_tableView];
     [self.view addSubview:self.scrollView];
     
 }
@@ -109,11 +122,56 @@
     self.webViewActualSizeHeight = webViewHeight;
     
     _webView.frame = CGRectMake(10, self.labelActualSizeHeigth+60, self.view.frame.size.width-20, webViewHeight);
-    CGSize size = CGSizeMake(self.view.frame.size.width, _authorLabel.frame.size.height+_titleLabel.frame.size.height+_webView.frame.size.height);
+    
+    _tableView.frame = CGRectMake(10, webViewHeight+_labelActualSizeHeigth, self.view.frame.size.width-20, self.view.frame.size.height-280);
+    
+    CGSize size = CGSizeMake(self.view.frame.size.width, _authorLabel.frame.size.height+_titleLabel.frame.size.height+_webView.frame.size.height+50*_categoryListDatasource.count);
     _scrollView.contentSize = size;
     /*
     _tableView.frame = CGRectMake(10, 50+self.labelActualSizeHeigth+self.webViewActualSizeHeight, self.view.frame.size.width, 60*_tableViewDataSource.count+40);
     */
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return _categoryListDatasource.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 50;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *cid = @"cid";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cid];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cid];
+    }
+    
+    NSDictionary *dic = [_categoryListDatasource objectAtIndex:indexPath.row];
+    cell.textLabel.text = [dic objectForKey:@"name"];
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = CGRectMake(0, 0, 30, 30);
+    
+    [btn setImage:_ok forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(pressBtn:) forControlEvents:UIControlEventTouchUpInside];
+    
+    cell.accessoryView = btn;
+    
+    return cell;
+}
+
+- (void)pressBtn:(UIButton*)btn{
+    UIImage *image = [btn imageForState:UIControlStateNormal];
+    if (image == _ok) {
+        [btn setImage:_cancle forState:UIControlStateNormal];
+    }
+    if (image == _cancle) {
+        [btn setImage:_ok forState:UIControlStateNormal];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

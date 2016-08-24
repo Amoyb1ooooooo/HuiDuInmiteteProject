@@ -10,7 +10,7 @@
 
 @interface DiscoverList : NSObject
 
-@property (nonatomic,copy)NSString *did;
+@property (nonatomic,assign)NSInteger did;
 @property (nonatomic,copy)NSString *name;
 
 @end

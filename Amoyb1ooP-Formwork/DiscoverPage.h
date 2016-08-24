@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ArticleManager.h"
 @interface DiscoverPage : UIViewController
 <
 UITableViewDelegate,
-UITableViewDataSource
+UITableViewDataSource,
+ArticleManagerDelegate
 >
 
 @end

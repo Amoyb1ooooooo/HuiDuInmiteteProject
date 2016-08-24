@@ -12,7 +12,9 @@
 @interface ArticleDetailViewController : UIViewController
 <
 ArticleManagerDelegate,
-UIWebViewDelegate
+UIWebViewDelegate,
+UITableViewDelegate,
+UITableViewDataSource
 >
 
 @end
